@@ -1,0 +1,37 @@
+---
+- name: Configure Juniper MPLS Switch
+  hosts: 2300c
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+
+  tasks:
+    - include_vars: "./var.yml"
+
+    - name: Build JunOS agnostic config template
+      template: src=template/junos_agnostic_config.set.j2 dest={{build_dir}}/junos_agnostic_config.set
+      with_items: junos_agnostic_config
+
+    - name: Apply built config
+      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}junos_agnostic_config.set overwrite=no timeout=300
+
+    - name: Build JunOS EX switch configuration
+      template: src=template/junos_ex_config.set.j2 dest={{build_dir}}/junos_ex_config.set
+      with_items: junos_ex_config
+
+    - name: Apply built config
+      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}junos_ex_config.set overwrite=no timeout=300
+
+    - name: Build MPLS switch configuration
+      template: src=template/junos_mpls-sw_config.set.j2 dest={{build_dir}}/junos_mpls-sw_config.set
+      with_items: junos_mplssw_config
+
+    - name: Apply built config
+      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}junos_mpls-sw_config.set overwrite=no timeout=300
+
+    - name: Build phpIPAM address reservation
+      template: src=template/phpipam_config.j2 dest={{build_dir}}/phpipam_config.text
+      with_items: phpipam_config
+
+

@@ -1,0 +1,58 @@
+{% for item in junos_agnostic_config %}
+set system host-name {{ item.city_code }}-{{ item.closet }}-{{ item.type }}
+set system auto-snapshot
+set system domain-name acme.com
+set system time-zone {{ item.timezone }}
+set system no-redirects
+set system no-ping-record-route
+set system no-ping-time-stamp
+set system internet-options no-source-quench
+set system internet-options no-tcp-reset drop-all-tcp
+set system authentication-order tacplus
+set system ports console log-out-on-disconnect
+set system name-server 10.1.0.6
+set system name-server 10.1.0.8
+set system name-server 10.50.1.26
+set system tacplus-server 10.50.1.22 secret {{ item.acs_secret }}
+set system tacplus-server 10.50.1.22 source-address {{ item.mgmt_ip }}
+set system login class READ-ONLY idle-timeout 10
+set system login class READ-ONLY permissions view
+set system login class READ-ONLY permissions view-configuration
+set system login user read-only full-name "ACS read-only template"
+set system login user read-only uid 1050
+set system login user read-only class READ-ONLY
+set system login user remote full-name "ACS Template"
+set system login user remote uid 2050
+set system login user remote class super-user
+set system services ssh root-login allow
+set system services ssh protocol-version v2
+set system services ssh max-sessions-per-connection 32
+set system services ssh rate-limit 2
+set system services netconf ssh
+set system syslog archive size 100k
+set system syslog archive files 3
+set system syslog host 10.50.1.33 any any
+set system commit synchronize
+set system ntp server 10.1.0.6
+set system ntp server 10.1.0.8
+set system ntp server 10.50.1.26 prefer
+set system authentication-order tacplus
+set system login user remote class super-user
+set system services ssh root-login allow
+set system syslog user * any emergency
+set system syslog file messages any critical
+set system syslog file messages authorization info
+set system syslog file messages archive size 100k
+set system syslog file messages archive files 3
+set system syslog file interactive-commands interactive-commands error
+set system syslog file interactive-commands archive size 100k
+set system syslog file interactive-commands archive files 3
+set snmp location "{{ item.address }}"
+set snmp contact "neteng@acme.com"
+set snmp v3 usm local-engine user SW-{{ item.city_code }}-RO authentication-sha authentication-key {{ item.auth_key }}
+set snmp v3 usm local-engine user SW-{{ item.city_code }}-RO privacy-aes128 privacy-key {{ item.priv_key }}
+set snmp v3 vacm security-to-group security-model usm security-name SW-{{ item.city_code }}-RO group SW-{{ item.city_code }}-RO-GROUP
+set snmp v3 vacm access group SW-{{ item.city_code }}-RO-GROUP default-context-prefix security-model usm security-level privacy read-view RO-VIEW
+set snmp engine-id use-default-ip-address
+set snmp view RO-VIEW oid .1 include
+{% endfor %}

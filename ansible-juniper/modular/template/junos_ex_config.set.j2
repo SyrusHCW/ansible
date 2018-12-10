@@ -1,0 +1,50 @@
+{% for item in junos_ex_config %}
+set interfaces lo0 unit 0 family inet filter input F-MGMT-INET
+set interfaces lo0 unit 0 family inet address 127.0.0.1/32
+set forwarding-options storm-control-profiles P-STORM-CONTROL all bandwidth-percentage 75
+set forwarding-options storm-control-profiles P-STORM-CONTROL all no-registered-multicast
+set forwarding-options storm-control-profiles P-STORM-CONTROL action-shutdown
+set firewall family inet filter F-MGMT-INET term t100 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t100 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t100 from port ssh
+set firewall family inet filter F-MGMT-INET term t100 then accept
+set firewall family inet filter F-MGMT-INET term t110 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t110 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t110 from protocol udp
+set firewall family inet filter F-MGMT-INET term t110 from port snmp
+set firewall family inet filter F-MGMT-INET term t110 then accept
+set firewall family inet filter F-MGMT-INET term t120 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t120 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t120 from destination-port 830
+set firewall family inet filter F-MGMT-INET term t120 then accept
+set firewall family inet filter F-MGMT-INET term t130 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t130 from protocol udp
+set firewall family inet filter F-MGMT-INET term t130 from destination-port ntp
+set firewall family inet filter F-MGMT-INET term t130 then accept
+set firewall family inet filter F-MGMT-INET term t140 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t140 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t140 from destination-port 49
+set firewall family inet filter F-MGMT-INET term t140 then accept
+set firewall family inet filter F-MGMT-INET term t200 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t200 from port ssh
+set firewall family inet filter F-MGMT-INET term t200 then log
+set firewall family inet filter F-MGMT-INET term t200 then reject
+set firewall family inet filter F-MGMT-INET term t210 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t210 from protocol udp
+set firewall family inet filter F-MGMT-INET term t210 from destination-port snmp
+set firewall family inet filter F-MGMT-INET term t210 then log
+set firewall family inet filter F-MGMT-INET term t210 then reject
+set firewall family inet filter F-MGMT-INET term t220 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t220 from destination-port 830
+set firewall family inet filter F-MGMT-INET term t220 then log
+set firewall family inet filter F-MGMT-INET term t220 then reject
+set firewall family inet filter F-MGMT-INET term t230 from protocol udp
+set firewall family inet filter F-MGMT-INET term t230 from destination-port ntp
+set firewall family inet filter F-MGMT-INET term t230 then log
+set firewall family inet filter F-MGMT-INET term t230 then reject
+set firewall family inet filter F-MGMT-INET term t240 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t240 from destination-port 49
+set firewall family inet filter F-MGMT-INET term t240 then log
+set firewall family inet filter F-MGMT-INET term t240 then reject
+set firewall family inet filter F-MGMT-INET term default then accept
+{% endfor %}

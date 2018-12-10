@@ -1,0 +1,5 @@
+{% for item in test_config %}
+set system time-zone {{ item.timezone }}
+set system no-redirects
+set poe interface all
+{% endfor %}

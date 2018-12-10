@@ -1,0 +1,12 @@
+{% for item in mgmt_config %}
+
+set system host-name {{ item.hostname }}
+set system auto-snapshot
+set system domain-name subwaydai.com
+{% endfor %}
+
+#{% for item in test_config %}
+#set system time-zone {{ item.timezone }}
+set system no-redirects
+set poe interface all
+{% endfor %}
