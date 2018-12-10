@@ -7,7 +7,6 @@
     - Juniper.junos
 
   tasks:
-    - include_vars: "./var.yml"
 
     - name: Build JunOS agnostic config template
       template: src=template/junos_agnostic_config.set.j2 dest={{build_dir}}/junos_agnostic_config.set
