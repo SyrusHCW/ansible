@@ -1,0 +1,30 @@
+---
+build_dir: "/tmp/"
+city_code: "DRBY"
+mgmt_ip: "192.168.1.5"
+closet: "MDF"
+sw_type: "MPLS-SW1"
+
+junos_agnostic_config:
+  - city_code: '{{city_code}}'
+    closet: '{{closet}}'
+    type: '{{sw_type}}'
+    timezone: 'EDT'
+    mgmt_ip: '{{mgmt_ip}}'
+    acs_secret: '1234'
+    auth_key: 'qwerty'
+    priv_key: 'asdfgh'
+    address: 'knowhere'
+
+junos_ex_config:
+  - mgmt_ip: '{{mgmt_ip}}'
+
+junos_mplssw_config:
+  - mgmt_ip: '{{mgmt_ip}}'
+    mgmt_mask: '/24'
+    mgmt_gw: '192.168.1.254'
+    city_code: '{{city_code}}'
+
+phpipam_config:
+  - hostname: '{{city_code}}-{{closet}}-{{sw_type}}'
+    mgmt_ip: '{{mgmt_ip}}'
