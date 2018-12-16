@@ -1,6 +1,6 @@
 ---
 - name: Get Device Facts
-  hosts: syrus-mdf-fw1
+  hosts: 2300c
   roles:
     - Juniper.junos
   connection: local
