@@ -1,6 +1,6 @@
 ---
 - name: Configure Juniper MPLS Switch
-  hosts: "{{ host_vars['target'] }}"
+  hosts: "{{ target }}"
   connection: local
   gather_facts: no
   roles:
