@@ -1,6 +1,6 @@
 ---
 - name: Configure Juniper MPLS Switch
-  hosts: 2300c
+  hosts: {{ 2300c }}
   connection: local
   gather_facts: no
   roles:
