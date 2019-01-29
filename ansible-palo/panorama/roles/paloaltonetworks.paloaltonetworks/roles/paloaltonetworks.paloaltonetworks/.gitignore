@@ -1,0 +1,20 @@
+docs/_build
+.idea/
+panos_*.retry
+*.pyc
+*.bak
+
+# MACOS art
+.DS_Store
+
+# build tools and packaging
+MANIFEST
+ansible_pan.egg-info/
+build/
+dist/
+
+# Runtime files
+*.retry
+examples/firewall-secrets.yml
+examples/panorama-secrets.yml
+*.swp
