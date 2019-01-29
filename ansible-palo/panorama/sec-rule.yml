@@ -30,7 +30,7 @@
         rulebase: "{{ rulebase }}"
         rule_name: "{{ rule_name }}"
         source_zone: "{{ source_zone }}"
-        source_ip: "{{ source_name }}"
+        source_ip: "{{ source_names }}"
         destination_zone: "{{ destination_zone }}"
         destination_ip: "{{ destination_ip }}"
         application: "{{ application }}"
