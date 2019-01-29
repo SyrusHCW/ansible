@@ -6,14 +6,15 @@
     - role: paloaltonetworks.paloaltonetworks
     
   tasks:
-    - name: add SSH inbound rule to Panorama device group
+  
+    - name: policy 1
       panos_security_rule:
         operation: 'add'
         ip_address: "{{ ip_address }}"
         username: "{{ username }}"
         password: "{{ password }}"
         devicegroup: 'SYRUS-FW1'
-        rulebase: 'pre-rulebase'
+        rulebase: 'pre-rulebase 1'
         rule_name: 'SSH permit'
         source_zone: ['trust']
         source_ip: ['any']
@@ -25,4 +26,28 @@
         #log_setting: "LFP-POLICY1"
         #group_profile: "SPG-Default" #IDP, Actions, Profile Setting
         commit: False
-
+      tags:
+        - policy1
+        
+        
+    - name: Policy 2
+      panos_security_rule:
+        operation: 'add'
+        ip_address: "{{ ip_address }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        devicegroup: 'SYRUS-FW1'
+        rulebase: 'pre-rulebase'
+        rule_name: 'SSH permit 2'
+        source_zone: ['trust']
+        source_ip: ['any']
+        destination_zone: ['untrust']
+        destination_ip: ['1.1.1.1']
+        application: ['ssh']
+        service: "application-default"
+        action: 'allow'
+        #log_setting: "LFP-POLICY1"
+        #group_profile: "SPG-Default" #IDP, Actions, Profile Setting
+        commit: False
+      tags:
+        - policy2
