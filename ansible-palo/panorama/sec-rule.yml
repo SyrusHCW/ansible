@@ -10,7 +10,7 @@
     - name: Address Object
       panos_address_object:
         ip_address: "{{ ip_address }}"
-        username:  {{ ANSIBLE_NET_USERNAME}} 
+        username: "{{ ANSIBLE_NET_USERNAME}}"
         password: "{{ password }}"
         device_group: "{{ device_group }}"
         name: "{{ source_name }}"
