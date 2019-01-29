@@ -12,7 +12,7 @@
         ip_address: "{{ ip_address }}"
         username: "{{ username }}"
         password: "{{ password }}"
-        devicegroup: "{{ device_group }}"
+        device_group: "{{ device_group }}"
         name: "{{ source_name }}"
         value: "{{ source_ip }}"
         commit: False
