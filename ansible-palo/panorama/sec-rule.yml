@@ -4,6 +4,11 @@
 
   roles:
     - role: paloaltonetworks.paloaltonetworks
+    
+  vars:
+    ip_address: '18.214.36.168'
+    username: 'admin'
+    password: '5yru5H(W'
 
   tasks:
     - name: add SSH inbound rule to Panorama device group
