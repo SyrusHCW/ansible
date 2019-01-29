@@ -9,7 +9,6 @@
 
     - name: Address Object
       panos_address_object:
-        operation: 'add'
         ip_address: "{{ ip_address }}"
         username: "{{ username }}"
         password: "{{ password }}"
