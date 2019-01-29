@@ -21,7 +21,7 @@
         destination_zone: "{{ destination_zone }}"
         destination_ip: "{{ destination_ip }}"
         application: "{{ application }}"
-        service: "application-default"
+        service: "{{ service }}"
         action: 'allow'
         #log_setting: "LFP-POLICY1"
         #group_profile: "SPG-Default" #IDP, Actions, Profile Setting
@@ -44,7 +44,7 @@
         destination_zone: "{{ destination_zone }}"
         destination_ip: "{{ destination_ip }}"
         application: "{{ application }}"
-        service: "application-default"
+        service: "{{ service }}"
         action: 'allow'
         #log_setting: "LFP-POLICY1"
         #group_profile: "SPG-Default" #IDP, Actions, Profile Setting
