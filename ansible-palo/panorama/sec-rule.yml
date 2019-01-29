@@ -9,9 +9,9 @@
     - name: add SSH inbound rule to Panorama device group
       panos_security_rule:
         operation: 'add'
-        ip_address: '{{ ip_address }}'
-        username: '{{ username }}'
-        password: '{{ password }}'
+        ip_address: "{{ ip_address }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
         devicegroup: 'SYRUS-FW1'
         rulebase: 'pre-rulebase'
         rule_name: 'SSH permit'
