@@ -7,4 +7,4 @@
     
   tasks:
     - name: Creat policies
-      script: python scripts/site-policies.py {{ username }} '{{ palo_password }}' {{ panorama }}
+      script: scripts/site-policies.py {{ username }} '{{ palo_password }}' {{ panorama }}
