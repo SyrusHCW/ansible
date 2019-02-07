@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+
+  roles:
+    - role: paloaltonetworks.paloaltonetworks
+    
+  tasks:
+    - name: Creat policies
+      command: python scripts/site-policies.py {{ username }} {{ password }} {{ panorama }}
