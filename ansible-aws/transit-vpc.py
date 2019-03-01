@@ -393,8 +393,8 @@ xpath1 = '{0}{1}{2}'.format("/config/devices/entry[@name='localhost.localdomain'
 
 
 xapi = pan.xapi.PanXapi(api_username = "admin", \
-        api_password = "5yru5H(W", \
-        hostname='18.214.36.168')
+        api_password = "admin, \
+        hostname='1.1.1.1')
 
 
 xapi.set(xpath = xpath1, \
