@@ -78,7 +78,7 @@ for tags in range(0,count):
 
 
                 cgw = ec2.meta.client.create_customer_gateway(BgpAsn=transit_asn, \
-                        PublicIp='18.215.13.215', \
+                        PublicIp='1.1.1.1', \
                         Type='ipsec.1', \
                         DryRun=False)
 
