@@ -23,7 +23,7 @@ psk1 = '1234567890'
 tunnelinsidecidr2 = '169.254.100.16/30'
 psk2 = '1234567890'
 
-device_group = "DG-TECHNOLOGY-MFD612"
+device_group = "DG-AWS-TRANSIT"
 
 template = 'T-DEVICE-AWS-TRANSIT'
 
