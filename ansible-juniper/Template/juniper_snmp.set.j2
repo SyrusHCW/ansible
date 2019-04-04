@@ -1,10 +1,10 @@
 {% for items in junos_snmp_config %}
 set snmp location "{{ items.address }}"
 set snmp contact "neteng@subway.com"
-set snmp v3 usm local-engine user SW-{{ items.city_code }}-RO authentication-sha authentication-password {{ items.auth_password }}
-set snmp v3 usm local-engine user SW-{{ items.city_code }}-RO privacy-aes128 privacy-password {{ items.priv_password }}
-set snmp v3 vacm security-to-group security-model usm security-name SW-{{ items.city_code }}-RO group SW-{{ items.city_code }}-RO-GROUP
-set snmp v3 vacm access group SW-{{ items.city_code }}-RO-GROUP default-context-prefix security-model usm security-level privacy read-view RO-VIEW
+set snmp v3 usm local-engine user {{ items.username }} authentication-sha authentication-password {{ items.auth_password }}
+set snmp v3 usm local-engine user {{ items.username }} privacy-aes128 privacy-password {{ items.priv_password }}
+set snmp v3 vacm security-to-group security-model usm security-name {{ items.username }} group {{ items.username }}-GROUP
+set snmp v3 vacm access group {{ items.username }}-GROUP default-context-prefix security-model usm security-level privacy read-view RO-VIEW
 set snmp engine-id use-default-ip-address
 set snmp view RO-VIEW oid .1 include
 {% endfor %}
