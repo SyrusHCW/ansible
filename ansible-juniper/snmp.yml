@@ -11,8 +11,8 @@
     junos_snmp_config:
       - address: 'Test'
         city_code: 'MIA'
-        auth_password: {{ snmp_auth }}
-        priv_password: {{ snmp_priv }}
+        auth_password: '{{ snmp_auth }}'
+        priv_password: '{{ snmp_priv }}'
 
   tasks:
     - name: Build JunOS Switch SNMP Configuration
