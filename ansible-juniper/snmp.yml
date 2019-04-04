@@ -1,9 +1,10 @@
 ---
 - name: Configure Juniper SNMP
   connection: local
+  hosts: local
   gather_facts: no
-  roles:
-    - juniper.junos
+  #roles:
+  #  - juniper.junos
 
   vars:
     build_dir: "/tmp/"
