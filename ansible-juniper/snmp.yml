@@ -1,7 +1,7 @@
 ---
 - name: Configure Juniper SNMP
   connection: local
-  hosts: local
+  hosts: syrus-mdf-fw1
   gather_facts: no
   #roles:
   #  - juniper.junos
