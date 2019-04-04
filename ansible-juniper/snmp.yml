@@ -1,0 +1,29 @@
+---
+- name: Configure Juniper SNMP
+  hosts: 2300c
+  connection: local
+  gather_facts: no
+  roles:
+    - juniper.junos
+
+  vars:
+    build_dir: "/tmp/"
+    junos_snmp_config:
+      - address: 'Test'
+        city_code: 'MIA'
+        auth_key: '1234567890'
+        priv_key: '1234567890'
+
+  tasks:
+    - name: Build JunOS Switch SNMP Configuration
+      template: src=Template/juniper_snmp.set.j2 dest={{build_dir}}/junos_switch_snmp_config.set
+      with_items: junos_snmp_config
+
+    - name: Read App Version
+      command: cat {{ build_dir }}/junos_switch_snmp_config.set
+      register: app_version
+
+    - name: display set commands
+      debug:
+        msg: "App Version {{ app_version.stdout }}"
+
