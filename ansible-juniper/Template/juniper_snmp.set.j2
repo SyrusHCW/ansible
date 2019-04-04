@@ -1,6 +1,6 @@
 {% for items in junos_snmp_config %}
 set snmp location "{{ items.address }}"
-set snmp contact "neteng@subway.com"
+set snmp contact "neteng@acme.com"
 set snmp v3 usm local-engine user {{ items.username }} authentication-sha authentication-password {{ items.auth_password }}
 set snmp v3 usm local-engine user {{ items.username }} privacy-aes128 privacy-password {{ items.priv_password }}
 set snmp v3 vacm security-to-group security-model usm security-name {{ items.username }} group {{ items.username }}-GROUP
