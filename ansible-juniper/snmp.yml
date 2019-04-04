@@ -10,7 +10,7 @@
     build_dir: "/tmp/"
     junos_snmp_config:
       - address: 'Test'
-        city_code: 'MIA'
+        username: '{{ username }}'
         auth_password: '{{ snmp_auth }}'
         priv_password: '{{ snmp_priv }}'
 
