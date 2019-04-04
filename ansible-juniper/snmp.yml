@@ -1,6 +1,6 @@
 ---
 - name: Configure Juniper SNMP
-  hosts: 2300c
+  hosts: local
   connection: local
   gather_facts: no
   roles:
