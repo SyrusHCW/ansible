@@ -7,14 +7,12 @@
   #  - juniper.junos
 
   vars:
-    auth_password1: {{ auth_password }}
-    priv_password1: {{ priv_password }}
     build_dir: "/tmp/"
     junos_snmp_config:
       - address: 'Test'
         city_code: 'MIA'
-        auth_password: {{ auth_password1 }}
-        priv_password: {{ priv_password1 }}
+        auth_password: {{ auth_password }}
+        priv_password: {{ priv_password }}
 
   tasks:
     - name: Build JunOS Switch SNMP Configuration
