@@ -6,7 +6,15 @@
       cloudformation:
         aws_access_key: '{{ aws_access_key }}'
         aws_secret_key:	'{{ aws_secret_key }}'
+        stack_name: '{{ stack_name }}'
         state: "present"
         region: "us-east-1"
         disable_rollback: true
         template: "vpc/CF-PPR-2AZ-VPC.yml"
+        template_parameters:
+          EnvironmentName: '{{ EnvironmentName }}'
+          VpcCIDR: '{{ VpcCIDR }}'
+          PrivateSubnet1CIDR: '{{ PrivateSubnet1CIDR }}'
+          PrivateSubnet2CIDR: '{{ PrivateSubnet2CIDR }}'
+          PublicSubnet1CIDR: '{{ PublicSubnet1CIDR }}'
+          PublicSubnet2CIDR: '{{ PublicSubnet2CIDR }}'
