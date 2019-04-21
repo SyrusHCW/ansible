@@ -4,8 +4,8 @@
   tasks:
     - name: Create a VPC across two Avalibity Zones with Public and Private subnets 
       cloudformation:
-        aws_access_key: '{ aws_access_key }'
-        aws_secret_key:	'{ aws_secret_key }'
+        aws_access_key: '{{ aws_access_key }}'
+        aws_secret_key:	'{{ aws_secret_key }}'
         stack_name: "STACK-POOT"
         state: "present"
         region: "us-east-1"
