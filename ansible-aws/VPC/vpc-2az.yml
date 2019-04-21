@@ -10,5 +10,3 @@
         region: "us-east-1"
         disable_rollback: true
         template: "vpc/CF-PPR-2AZ-VPC.yml"
-        tags:
-          Stack: stack_name
