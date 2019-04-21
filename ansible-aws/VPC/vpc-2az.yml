@@ -6,17 +6,9 @@
       cloudformation:
         aws_access_key: '{{ aws_access_key }}'
         aws_secret_key:	'{{ aws_secret_key }}'
-        stack_name: "STACK-POOT"
         state: "present"
         region: "us-east-1"
         disable_rollback: true
         template: "vpc/CF-PPR-2AZ-VPC.yml"
-        template_parameters:
-          EnvironmentName: "ST-POOT"
-          VpcCIDR: "10.1.0.0/24"
-          PrivateSubnet1CIDR: "10.1.0.0/27"
-          PrivateSubnet2CIDR: "10.1.0.32/27"
-          PublicSubnet1CIDR: "10.1.0.64/27"
-          PublicSubnet2CIDR: "10.1.0.96/27"
         tags:
           Stack: stack_name
