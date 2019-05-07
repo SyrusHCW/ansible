@@ -10,17 +10,17 @@
     - build_dir: '/tmp/'
     - system_vars:
         - city_code: "MIA8400"
+          closet: "MDF"
+          switch_type: "ASW1"
+          mgmt_ip: "192.168.1.15"
+          acs_secret: '1234'
       address: 'Milford 325'
       username: 'SW-MFD325-RO'
       auth_password: '1234567890'
       priv_password: '0987654321'
       port_count: 12
       switch_count: 1
-      city_code: 'MFD325'
-      closet_code: 'MDF'
-      switch_type: 'ASW1'
-      mgmt_ip: '192.168.1.15'
-      acs_secret: 'poop'
+
 
   tasks:
 
