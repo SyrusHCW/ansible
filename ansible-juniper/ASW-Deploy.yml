@@ -22,6 +22,8 @@
     - int_vars:     
         - port_count: 12
           switch_count: 1
+    - uplink_vars:
+        - uplink_int: 'ge-0/1/0'
 
 
   tasks:
@@ -58,6 +60,17 @@
       junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}access-interfaces.set overwrite=no timeout=300
       tags:
         - interface
+
+    - name: Build Uplink Interface configuration
+      template: src=Template/uplink-interfaces.set.j2 dest={{build_dir}}/uplink-interfaces.set
+      with_items: uplink_vars
+      tags:
+        - uplink
+
+    - name: Apply interface config
+      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}uplink-interfaces.set overwrite=no timeout=300
+      tags:
+        - uplink
         
     # If you require access switch configuration for an Airtame network uncomment the next two stanzas
     #- name: Build Airtame Configuration for access switch configuration
