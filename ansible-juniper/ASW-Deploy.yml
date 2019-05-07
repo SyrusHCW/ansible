@@ -14,7 +14,7 @@
           type: "ASW1"
           mgmt_ip: "192.168.1.15"
           acs_secret: '1234'
-    - snmp_vars     
+    - snmp_vars:    
         - address: 'Milford 325'
           username: 'SW-MFD325-RO'
           auth_password: '1234567890'
