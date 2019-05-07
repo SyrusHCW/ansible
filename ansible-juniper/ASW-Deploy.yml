@@ -17,9 +17,9 @@
           acs_secret: '1234'
     - snmp_vars:    
         - address: 'Milford 325'
-          username: 'SW-MFD325-RO'
-          auth_password: '1234567890'
-          priv_password: '0987654321'
+          username: "{{snmp_username}}'
+          auth_password: '{{priv_password}}'
+          priv_password: '{{auth_password}}'
     - int_vars:     
         - port_count: 12
           switch_count: 1
