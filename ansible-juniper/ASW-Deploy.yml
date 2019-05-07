@@ -86,13 +86,13 @@
         - mstp       
  
     - name: Build JunOS filter config
-      template: src=Template/filter.set.j2.set.j2 dest={{build_dir}}/filter.set.j2.set
+      template: src=Template/filter.set.j2 dest={{build_dir}}/filter.set
       with_items: system_vars
       tags:
         - filter
 
     - name: Apply filter config
-      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}filter.set.j2.set overwrite=no timeout=300
+      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}filter.set overwrite=no timeout=300
       tags:
         - filter
         
