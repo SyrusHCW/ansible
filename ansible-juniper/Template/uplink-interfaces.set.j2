@@ -1,4 +1,5 @@
 {% for item in uplink_vars %}
+delete interfaces interface-range TRUST-RANGE member {{ item.uplink_int }}
 set interfaces interface-range UPLINK-RANGE member {{ item.uplink_int }}
 set interfaces interface-range UPLINK-RANGE unit 0 family ethernet-switching interface-mode trunk
 set interfaces interface-range UPLINK-RANGE unit 0 family ethernet-switching vlan members all
