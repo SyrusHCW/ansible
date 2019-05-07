@@ -26,18 +26,39 @@
 
   tasks:
 
-    - name: Build JunOS System config template
+    - name: Build JunOS System config
       template: src=Template/ex-system.set.j2 dest={{build_dir}}/ex-system.set
       with_items: system_vars
+      tags:
+        - system
+
+    - name: Apply System config
+      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}ex-system.set overwrite=no timeout=300
+      tags:
+        - system
 
     - name: Build JunOS SNMP config
       template: src=Template/juniper_snmp.set.j2 dest={{build_dir}}/juniper_snmp.set
       with_items: snmp_vars
+      tags:
+        - snmp
 
+    - name: Apply SNMP config
+      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}juniper_snmp.set overwrite=no timeout=300
+      tags:
+        - snmp
+        
     - name: Build Access switch Interface configuration
       template: src=Template/access-interfaces.set.j2 dest={{build_dir}}/access-interfaces.set
       with_items: int_vars
+      tags:
+        - interface
 
+    - name: Apply interface config
+      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}access-interfaces.set overwrite=no timeout=300
+      tags:
+        - interface
+        
     # If you require access switch configuration for an Airtame network uncomment the next two stanzas
     #- name: Build Airtame Configuration for access switch configuration
     #  template: src=template/access-sw/junos_access_sw_config.set.j2 dest={{build_dir}}/junos_access_sw_config.set
