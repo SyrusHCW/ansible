@@ -25,6 +25,7 @@
           mgmt_ip: "192.168.1.15"
     - uplink_vars:
         - uplink_int: 'ge-0/0/0'
+          description: "MFD325-MDF-CSW1 Port c8"
     - mstp_vars:
         - mstp_name: 'subwaydai'
 
