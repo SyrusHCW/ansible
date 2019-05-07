@@ -1,4 +1,4 @@
-{% for items in vars %}
+{% for items in snmp_vars %}
 set snmp location "{{ items.address }}"
 set snmp contact "neteng@acme.com"
 set snmp v3 usm local-engine user {{ items.username }} authentication-sha authentication-password {{ items.auth_password }}
