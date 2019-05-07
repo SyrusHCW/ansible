@@ -11,6 +11,9 @@ set interfaces interface-range TRUST-RANGE unit 0 family ethernet-switching stor
 set interfaces interface-range TRUST-RANGE unit 0 family ethernet-switching interface-mode access
 set interfaces interface-range TRUST-RANGE unit 0 family ethernet-switching vlan members trust_access
 set interfaces interface-range TRUST-RANGE unit 0 family ethernet-switching recovery-timeout 120
+set forwarding-options storm-control-profiles P-STORM-CONTROL all bandwidth-percentage 75
+set forwarding-options storm-control-profiles P-STORM-CONTROL all no-registered-multicast
+set forwarding-options storm-control-profiles P-STORM-CONTROL action-shutdown
 set protocols lldp interface all
 set protocols lldp-med interface TRUST-RANGE
 set protocols layer2-control nonstop-bridging
