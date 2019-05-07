@@ -18,8 +18,11 @@ set protocols lldp interface all
 set protocols lldp-med interface TRUST-RANGE
 set protocols layer2-control nonstop-bridging
 set protocols layer2-control bpdu-block disable-timeout 120
-set vlans trust_access vlan-id 50
+set vlans trust_access vlan-id 420
 set vlans trust_access forwarding-options dhcp-security arp-inspection
+set vlans trust_management vlan-id 1
+set vlans trust_management l3-interface irb.1
 set poe interface all
 set routing-options nonstop-routing
+set interfaces irb unit 1 family inet address {{ item.mgmt_ip }}
 {% endfor %}
