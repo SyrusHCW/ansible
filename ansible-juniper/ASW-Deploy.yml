@@ -14,7 +14,7 @@
           closet: "MDF"
           type: "ASW1"
           mgmt_ip: "{{mgmt_ip}}"
-          acs_secret: '1234'
+          acs_secret: "{{acs_secret}}"
     - snmp_vars:    
         - address: 'Milford 325'
           username: "{{snmp_username}}"
