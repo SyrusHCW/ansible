@@ -96,16 +96,3 @@
       junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}filter.set overwrite=no timeout=300
       tags:
         - filter
-        
-    # If you require access switch configuration for an Airtame network uncomment the next two stanzas
-    #- name: Build Airtame Configuration for access switch configuration
-    #  template: src=template/access-sw/junos_access_sw_config.set.j2 dest={{build_dir}}/junos_access_sw_config.set
-    #  with_items: junos_access_sw_config
-
-    # If you require a L2 Segment for a SIP VRF uncomment the next two stanzas.
-    #- name: Build MPLS SIP L2 confiugration
-    #  template: src=template/junos_mpls-sip_config.set.j2 dest={{build_dir}}/junos_mpls_sip_config.set
-
-    #- name: Build phpIPAM address reservation
-    #  template: src=template/phpipam_config.j2 dest={{build_dir}}/phpipam_config.text
-    #  with_items: phpipam_config
