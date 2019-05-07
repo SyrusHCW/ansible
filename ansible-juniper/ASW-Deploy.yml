@@ -22,6 +22,7 @@
     - int_vars:     
         - port_count: 12
           switch_count: 1
+          mgmt_ip: "192.168.1.15"
     - uplink_vars:
         - uplink_int: 'ge-0/0/0'
     - mstp_vars:
