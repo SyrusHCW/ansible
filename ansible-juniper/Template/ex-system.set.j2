@@ -1,4 +1,4 @@
-{% for item in junos_agnostic_config %}
+{% for item in vars %}
 set system host-name {{ item.city_code }}-{{ item.closet }}-{{ item.type }}
 set system auto-snapshot
 set system domain-name acme.com
