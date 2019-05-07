@@ -24,6 +24,7 @@
           switch_count: 1
     - uplink_vars:
         - uplink_int: 'ge-0/0/0'
+    - mstp_vars:    
 
 
   tasks:
@@ -71,6 +72,17 @@
       junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}uplink-interfaces.set overwrite=no timeout=300
       tags:
         - uplink
+        
+    - name: Build mstp configuration
+      template: src=Template/mstp.set.j2 dest={{build_dir}}/mstp.set
+      with_items: mstp_vars
+      tags:
+        - mstp
+
+    - name: Apply mstp config
+      junos_install_config: host={{ inventory_hostname }} file={{ build_dir }}mstp.set overwrite=no timeout=300
+      tags:
+        - mstp       
         
     # If you require access switch configuration for an Airtame network uncomment the next two stanzas
     #- name: Build Airtame Configuration for access switch configuration
