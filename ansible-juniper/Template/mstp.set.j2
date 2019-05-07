@@ -1,8 +1,0 @@
-{% for item in mstp_vars %}
-set protocols mstp configuration-name {{ item.mstp_name }}
-set protocols mstp revision-level 1
-set protocols mstp bridge-priority 60k
-set protocols mstp bpdu-block-on-edge
-set protocols mstp interface TRUST-RANGE edge
-set protocols mstp interface UPLINK-RANGE
-{% endfor %}

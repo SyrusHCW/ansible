@@ -1,0 +1,45 @@
+{% for item in system_vars %}
+set firewall family inet filter F-MGMT-INET term t10 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t10 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t10 from port ssh
+set firewall family inet filter F-MGMT-INET term t10 then accept
+set firewall family inet filter F-MGMT-INET term t11 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t11 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t11 from protocol udp
+set firewall family inet filter F-MGMT-INET term t11 from port snmp
+set firewall family inet filter F-MGMT-INET term t11 then accept
+set firewall family inet filter F-MGMT-INET term t12 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t12 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t12 from destination-port 830
+set firewall family inet filter F-MGMT-INET term t12 then accept
+set firewall family inet filter F-MGMT-INET term t13 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t13 from protocol udp
+set firewall family inet filter F-MGMT-INET term t13 from destination-port ntp
+set firewall family inet filter F-MGMT-INET term t13 then accept
+set firewall family inet filter F-MGMT-INET term t14 from destination-address {{ item.mgmt_ip }}/32
+set firewall family inet filter F-MGMT-INET term t14 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t14 from destination-port 49
+set firewall family inet filter F-MGMT-INET term t14 then accept
+set firewall family inet filter F-MGMT-INET term t20 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t20 from port ssh
+set firewall family inet filter F-MGMT-INET term t20 then log
+set firewall family inet filter F-MGMT-INET term t20 then reject
+set firewall family inet filter F-MGMT-INET term t21 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t21 from protocol udp
+set firewall family inet filter F-MGMT-INET term t21 from destination-port snmp
+set firewall family inet filter F-MGMT-INET term t21 then log
+set firewall family inet filter F-MGMT-INET term t21 then reject
+set firewall family inet filter F-MGMT-INET term t22 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t22 from destination-port 830
+set firewall family inet filter F-MGMT-INET term t22 then log
+set firewall family inet filter F-MGMT-INET term t22 then reject
+set firewall family inet filter F-MGMT-INET term t23 from protocol udp
+set firewall family inet filter F-MGMT-INET term t23 from destination-port ntp
+set firewall family inet filter F-MGMT-INET term t23 then log
+set firewall family inet filter F-MGMT-INET term t23 then reject
+set firewall family inet filter F-MGMT-INET term t24 from protocol tcp
+set firewall family inet filter F-MGMT-INET term t24 from destination-port 49
+set firewall family inet filter F-MGMT-INET term t24 then log
+set firewall family inet filter F-MGMT-INET term t24 then reject
+set firewall family inet filter F-MGMT-INET term default then accept
+{% endfor %}
