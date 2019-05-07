@@ -13,7 +13,7 @@
         - city_code: "MIA8400"
           closet: "MDF"
           type: "ASW1"
-          mgmt_ip: {{ mgmt_ip }}
+          mgmt_ip: "{{mgmt_ip}}"
           acs_secret: '1234'
     - snmp_vars:    
         - address: 'Milford 325'
@@ -23,7 +23,7 @@
     - int_vars:     
         - port_count: 12
           switch_count: 1
-          mgmt_ip: {{ mgmt_ip }}
+          mgmt_ip: "{{mgmt_ip}}"
     - uplink_vars:
         - uplink_int: 'ge-0/0/0'
           description: "MFD325-MDF-CSW1 Port c8"
