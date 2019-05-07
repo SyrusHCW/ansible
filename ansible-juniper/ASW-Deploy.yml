@@ -7,7 +7,8 @@
     - Juniper.junos
     
   vars:
-    - address: 'Milford 325'
+    - build_dir: '/tmp/'
+      address: 'Milford 325'
       username: 'SW-MFD325-RO'
       auth_password: '1234567890'
       priv_password: '0987654321'
