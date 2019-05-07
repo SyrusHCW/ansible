@@ -8,7 +8,8 @@
     
   vars:
     - build_dir: '/tmp/'
-      city_code: "MIA8400"
+    - system_vars:
+        - city_code: "MIA8400"
       address: 'Milford 325'
       username: 'SW-MFD325-RO'
       auth_password: '1234567890'
@@ -25,7 +26,7 @@
 
     - name: Build JunOS System config template
       template: src=Template/ex-system.set.j2 dest={{build_dir}}/ex-system.set
-      with_items: vars
+      with_items: system_vars
 
     - name: Build JunOS SNMP config
       template: src=Template/juniper_snmp.set.j2 dest={{build_dir}}/juniper_snmp.set
