@@ -1,0 +1,22 @@
+{% for item in access_config %}
+set system commit synchronize
+set chassis redundancy graceful-switchover
+set chassis alarm management-ethernet link-down ignore
+        {% for p in range(item.port_count | int) %}
+                {% for i in range(item.switch_count | int) %}
+                set interfaces interface-range TRUST-RANGE member ge-{{ i }}/0/{{ p }}
+                {% endfor %}
+        {% endfor %}
+set interfaces interface-range TRUST-RANGE unit 0 family ethernet-switching storm-control P-STORM-CONTROL
+set interfaces interface-range TRUST-RANGE unit 0 family ethernet-switching interface-mode access
+set interfaces interface-range TRUST-RANGE unit 0 family ethernet-switching vlan members trust_access
+set interfaces interface-range TRUST-RANGE unit 0 family ethernet-switching recovery-timeout 120
+set protocols lldp interface all
+set protocols lldp-med interface TRUST-RANGE
+set protocols layer2-control nonstop-bridging
+set protocols layer2-control bpdu-block disable-timeout 120
+set vlans trust_access vlan-id 50
+set vlans trust_access forwarding-options dhcp-security arp-inspection
+set poe interface all
+set routing-options nonstop-routing
+{% endfor %}
