@@ -31,7 +31,7 @@
 
     - name: Build JunOS SNMP config
       template: src=Template/juniper_snmp.set.j2 dest={{build_dir}}/juniper_snmp.set
-      with_items: vars
+      with_items: snmp_vars
 
     - name: Build Access switch Interface configuration
       template: src=Template/access-interfaces.set.j2 dest={{build_dir}}/access-interfaces.set
