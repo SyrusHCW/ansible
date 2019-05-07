@@ -5,21 +5,33 @@
   gather_facts: no
   roles:
     - Juniper.junos
+    
+  vars:
+    - address: 'Milford 325'
+      username: 'SW-MFD325-RO'
+      auth_password: '1234567890'
+      priv_password: '0987654321'
+      port_count: 12
+      switch_count: 1
+      city_code: 'MFD325'
+      closet_code: 'MDF'
+      switch_type: 'ASW1'
+      mgmt_ip: '192.168.1.15'
+      acs_secret: 'poop'
 
   tasks:
-    - include_vars: "./asw-var.yml"
 
-   # - name: Build JunOS agnostic config template
-   #   template: src=template/junos_agnostic_config.set.j2 dest={{build_dir}}/junos_agnostic_config.set
-   #   with_items: junos_agnostic_config
+    - name: Build JunOS System config template
+      template: src=Template/ex-system.set.j2 dest={{build_dir}}/ex-system.set
+      with_items: vars
 
-   # - name: Build JunOS EX switch configuration
-   #   template: src=template/junos_ex_config.set.j2 dest={{build_dir}}/junos_ex_config.set
-   #   with_items: junos_ex_config
+    - name: Build JunOS SNMP config
+      template: src=Template/juniper_snmp.set.j2 dest={{build_dir}}/juniper_snmp.set
+      with_items: vars
 
-    - name: Build Access switch configuration
-      template: src=Template/junos_access_sw_config.set.j2 dest={{build_dir}}/junos_access_sw_config.set
-      with_items: junos_access_sw_config
+    - name: Build Access switch Interface configuration
+      template: src=Template/access-interfaces.set.j2 dest={{build_dir}}/access-interfaces.set
+      with_items: vars
 
     # If you require access switch configuration for an Airtame network uncomment the next two stanzas
     #- name: Build Airtame Configuration for access switch configuration
