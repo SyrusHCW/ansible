@@ -8,7 +8,7 @@
     
   vars:
     - build_dir: '/tmp/'
-      city_code: 'MIA8400'
+      city_code: "MIA8400"
       address: 'Milford 325'
       username: 'SW-MFD325-RO'
       auth_password: '1234567890'
