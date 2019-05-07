@@ -17,7 +17,7 @@
           acs_secret: '1234'
     - snmp_vars:    
         - address: 'Milford 325'
-          username: "{{snmp_username}}'
+          username: "{{snmp_username}}"
           auth_password: '{{priv_password}}'
           priv_password: '{{auth_password}}'
     - int_vars:     
