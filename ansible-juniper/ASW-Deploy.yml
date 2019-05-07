@@ -19,8 +19,9 @@
           username: 'SW-MFD325-RO'
           auth_password: '1234567890'
           priv_password: '0987654321'
-      port_count: 12
-      switch_count: 1
+    - int_vars:     
+        - port_count: 12
+          switch_count: 1
 
 
   tasks:
@@ -35,7 +36,7 @@
 
     - name: Build Access switch Interface configuration
       template: src=Template/access-interfaces.set.j2 dest={{build_dir}}/access-interfaces.set
-      with_items: vars
+      with_items: int_vars
 
     # If you require access switch configuration for an Airtame network uncomment the next two stanzas
     #- name: Build Airtame Configuration for access switch configuration
