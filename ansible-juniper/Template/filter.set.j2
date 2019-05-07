@@ -42,4 +42,6 @@ set firewall family inet filter F-MGMT-INET term t24 from destination-port 49
 set firewall family inet filter F-MGMT-INET term t24 then log
 set firewall family inet filter F-MGMT-INET term t24 then reject
 set firewall family inet filter F-MGMT-INET term default then accept
+set interfaces lo0 unit 0 family inet filter input F-MGMT-INET
+set interfaces lo0 unit 0 family inet address 127.0.0.1/32
 {% endfor %}
