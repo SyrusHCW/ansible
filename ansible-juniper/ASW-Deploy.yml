@@ -7,28 +7,35 @@
     - juniper.junos
     
   vars:
+  
     - build_dir: '/tmp/'
       mgmt_ip: "192.168.1.15"
+      
     - system_vars:
         - city_code: "MIA8400"
           closet: "MDF"
           type: "ASW1"
           mgmt_ip: "{{mgmt_ip}}"
           acs_secret: "{{acs_secret}}"
+          
     - snmp_vars:    
-        - address: 'Milford 325'
+        - address: 'Milford 325 MDF'
           username: "{{snmp_username}}"
           auth_password: '{{priv_password}}'
           priv_password: '{{auth_password}}'
-    - int_vars:     
+          
+    - int_vars:
         - port_count: 12
           switch_count: 1
           mgmt_ip: "{{mgmt_ip}}"
+          
     - uplink_vars:
         - uplink_int: 'ge-0/0/0'
-          description: "MFD325-MDF-CSW1 Port c8"
+          description: "MFD325-MDF-CSW1 port C8"
+          
     - mstp_vars:
         - mstp_name: 'acme'
+          bridge_priority: 60k
 
 
   tasks:
