@@ -1,0 +1,6 @@
+{% for item in uplink_vars %}
+set interfaces interface-range UPLINK-RANGE member {{ item.uplink_int }}
+set interfaces {{ item.uplink_int }} description "{{ item.description }}"
+set interfaces interface-range UPLINK-RANGE unit 0 family ethernet-switching interface-mode trunk
+set interfaces interface-range UPLINK-RANGE unit 0 family ethernet-switching vlan members all
+{% endfor %}
