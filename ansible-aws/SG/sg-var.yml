@@ -5,8 +5,8 @@
     - name: Create security group
       ec2_group:
           name: "{{ project_name }}"
-          description: "{{ project_name }}"
-          region: "{{ aws_region }}"
+          description: "default VPC security group"
+          region: "us-east-1"
           rules:
               - proto: tcp
                 from_port: 22
@@ -20,4 +20,5 @@
                 from_port: 443
                 to_port: 443
                 cidr_ip: 0.0.0.0/0
+                group_id: sg-043939aa054287c9c
       register: basic_firewall
