@@ -49,7 +49,7 @@ for x in range(0,count0):
     sg_wfe = []                 # contains security group id of vpc's web front end security group
     sg_vpc = []                 # contains all security groups in vpc
     sg_inst = []                # list of security groups, this will become the value in the dictonary
-    sg_default = []
+    sg_default = []             # contains default securtiy groups
 
 ###########################################################################
 ############# Grab a list of all security groups in region ################
@@ -99,7 +99,7 @@ for x in range(0,count0):
                     else:
                         continue
 
-            if sg_response['SecurityGroups'][y]['GroupName'] == 'default':           # Searches for windows instances
+            if sg_response['SecurityGroups'][y]['GroupName'] == 'default':           # Searches for default
                 gid = sg_response['SecurityGroups'][y]['GroupId']
                 for tag in tags:
                         #print(tag)
