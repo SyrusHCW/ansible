@@ -123,7 +123,7 @@ for x in range(0,count4):
         'ToPort': -1,
         'UserIdGroupPairs': [{
         'GroupId': group_name_id[0],
-        'Description': 'DevOps Linux base Security Group'}]}
+        'Description': description}]}
     IpPermissions.append(sg_rule)
     security_group = ec2.SecurityGroup(group_name_id[0])
     print(IpPermissions)
