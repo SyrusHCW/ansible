@@ -67,13 +67,17 @@ for x in range(0,count3):
     if response['SecurityGroups'][x]['VpcId'] ==  vpc_id[0] and response['SecurityGroups'][x]['GroupName'] == group_name:
         sg_id.append(response['SecurityGroups'][x]['GroupId'])
         rules_count = len(response['SecurityGroups'][x]['IpPermissions'])
-        if rules_count < 0:
+        print(rules_count)
+        if rules_count > 0:
+            security_group = ec2.SecurityGroup(sg_id[0])
             security_group.revoke_ingress(IpPermissions=security_group.ip_permissions)
+            print(sg_id[0])
+            print(True)
     else:
         continue
 
 
-print(sg_id)
+#print(sg_id)
 
 
 pattern = re.compile("sg-")
@@ -101,7 +105,8 @@ security_group = ec2.SecurityGroup(group_name_id)
 count4 = len(group_name_id)
 for x in range(0,count4):
     IpPermissions = []
-    f = open(csv_name)
+    path = '{0}{1}'.format('../', csv_name)
+    f = open(path)
     csv_f = csv.reader(f)
     headers = next(csv_f)
     print(csv_f)
